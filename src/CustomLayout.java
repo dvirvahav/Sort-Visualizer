@@ -1,27 +1,9 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Desktop;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 public class CustomLayout extends JFrame {
@@ -40,7 +22,7 @@ public class CustomLayout extends JFrame {
 	JButton stop = new JButton(stopicon);
 	JButton about = new JButton(abouticon);
 	JPanel controlPanel = new JPanel();
-	JLabel alg = new JLabel("Algorythms:");
+	JLabel alg = new JLabel("Algorithms:");
 	JLabel BestCase = new JLabel();
 	JLabel BestCaseSet = new JLabel();
 	JLabel WorstCase = new JLabel();
@@ -86,7 +68,7 @@ public class CustomLayout extends JFrame {
 			UpdateThread();
 
 		});
-		menupanel.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.BLACK, 1), "Algorythm:"));
+		menupanel.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.BLACK, 1), "Algorithm:"));
 		menupanel.add(mainmenu);
 
 		// SLIDERS CONFIGURATION
@@ -271,7 +253,7 @@ public class CustomLayout extends JFrame {
 		 */
 		private static final long serialVersionUID = 1L;
 		ArrayList<Integer> list;
-		int x = 40, width = 5;
+		int x , width;
 
 		drawPanel(ArrayList<Integer> list) {
 			this.list = list;
@@ -363,7 +345,7 @@ public class CustomLayout extends JFrame {
 
 	// INIT NEW APP
 	public static void main(String[] args) {
-		CustomLayout mylayout = new CustomLayout("SortingVisual");
+		CustomLayout mylayout = new CustomLayout("SortVisualizer");
 
 		mylayout.setVisible(true);
 	}
