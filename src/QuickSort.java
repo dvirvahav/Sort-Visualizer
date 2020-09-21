@@ -24,8 +24,7 @@ public class QuickSort implements Runnable{
 @Override
 public void run() {
 	sort(arr,low,high);
-	centerPanel.repaint();
-    Util.GotToSleep(speed);
+
 }
 	 
 void sort(ArrayList<Integer> arr2, int low, int high) 
@@ -36,13 +35,17 @@ void sort(ArrayList<Integer> arr2, int low, int high)
           now at right place */
     	 if(Util.exit)
 	     		return;
+    	 
         int pi = partition(arr2, low, high); 
+        centerPanel.repaint();
+        Util.GotToSleep(speed);
         if(Util.exit)
      		return;
         // Recursively sort elements before 
         // partition and after partition 
         sort(arr2, low, pi-1); 
-        
+        centerPanel.repaint();
+        Util.GotToSleep(speed);
         sort(arr2, pi+1, high); 
         
         
@@ -74,8 +77,7 @@ int partition(ArrayList<Integer> arr2, int low, int high)
             centerPanel.repaint();
             Util.GotToSleep(speed);
         } 
-        centerPanel.repaint();
-        Util.GotToSleep(speed);
+        
     } 
 
     // swap arr[i+1] and arr[high] (or pivot) 
