@@ -38,10 +38,13 @@ public class CustomLayout extends JFrame {
 	JPanel menupanel = new JPanel();
 	JPanel infopanel = new JPanel();
 	String SelectedSort;
-	int shuffleFlag = 0;
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	double fwidthr = 0.6;
+	int fheight = (int) (screenSize.height * 0.8),
+			fwidth = (int) (screenSize.width < 1000 ? screenSize.width * (fwidthr + 0.3) : screenSize.width * fwidthr);
 	int startrun = 0;
 	int runFlag = 0;
-	int speed = speedSlider.getValue(), MaxSize = 658;
+	int speed = speedSlider.getValue(), MaxSize = (int) (fheight * 0.82);
 	Container mainContainer = this.getContentPane();
 	ArrayList<Integer> list = new ArrayList<Integer>();
 	drawPanel centerPanel = new drawPanel(list);
@@ -49,9 +52,9 @@ public class CustomLayout extends JFrame {
 
 	public CustomLayout(String title) {
 		super(title); // set title to the frame
-		this.setSize(1000, 800); // size of the frame
+		this.setSize(fwidth, fheight); // size of the frame
 		this.setResizable(false);
-		this.setLocation(300, 100); // set location on screen
+		this.setLocation((int) (screenSize.width * 0.2), (int) (screenSize.height * 0.1)); // set location on screen
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// first setup
 		Util.Random(list, arraySlider.getValue(), MaxSize);
@@ -62,12 +65,13 @@ public class CustomLayout extends JFrame {
 		SelectedSort = "BubbleSort";
 		menu.setText("BubbleSort");
 
-		//ComboBox Menu CONFIGURATION
+		// ComboBox Menu CONFIGURATION
 		mainmenu.addActionListener(e -> {
 			SelectedSort = sorting[mainmenu.getSelectedIndex()];
 			UpdateThread();
 
 		});
+
 		menupanel.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.BLACK, 1), "Algorithm:"));
 		menupanel.add(mainmenu);
 
@@ -115,7 +119,7 @@ public class CustomLayout extends JFrame {
 		AvgCaseSet.setText(" O(n^2)");
 
 		infopanel.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.BLACK, 1), "Complexity:"));
-		infopanel.setLayout(new GridLayout(4, 4));
+		infopanel.setLayout(new GridLayout(4, 0));
 		infopanel.add(BestCase);
 		infopanel.add(BestCaseSet);
 		infopanel.add(WorstCase);
@@ -134,7 +138,7 @@ public class CustomLayout extends JFrame {
 		// CONTROLS PANEL CONFIGURATION
 
 		controlPanel.setBorder(new LineBorder(new Color(169, 169, 169), 1));
-		controlPanel.setLayout(new FlowLayout());
+		controlPanel.setLayout(new GridLayout());
 		controlPanel.setBorder(BorderFactory.createTitledBorder(new LineBorder(new Color(20334455), 2), "Controls"));
 		controlPanel.setBackground(new Color(169, 169, 169));
 		controlPanel.add(menupanel);
@@ -235,7 +239,7 @@ public class CustomLayout extends JFrame {
 			aboutPanel.add(linkedin);
 			aboutPanel.add(close);
 			aboutFrame.setResizable(false);
-			aboutFrame.setLocation(800, 400);
+			aboutFrame.setLocation((int) (screenSize.width * 0.4), (int) (screenSize.height * 0.3));
 			aboutFrame.setSize(200, 270);
 			aboutFrame.setTitle("Info");
 			aboutFrame.add(aboutPanel);
@@ -253,7 +257,7 @@ public class CustomLayout extends JFrame {
 		 */
 		private static final long serialVersionUID = 1L;
 		ArrayList<Integer> list;
-		int x , width;
+		int x, width;
 
 		drawPanel(ArrayList<Integer> list) {
 			this.list = list;
@@ -263,12 +267,12 @@ public class CustomLayout extends JFrame {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			x = 50;
-			width = 800 / list.size();
+			this.width = (int) (screenSize.width * (fwidthr - 0.1)) / list.size();
 
 			for (int i = 0; i < list.size(); i++) {
 				g.setColor(Color.GRAY);
-				g.fillRect(x, MaxSize - list.get(i), width, list.get(i));
-				x += width + 1;
+				g.fillRect(x, MaxSize - list.get(i), this.width, list.get(i));
+				x += this.width + 1;
 
 			}
 
@@ -346,7 +350,6 @@ public class CustomLayout extends JFrame {
 	// INIT NEW APP
 	public static void main(String[] args) {
 		CustomLayout mylayout = new CustomLayout("SortVisualizer");
-
 		mylayout.setVisible(true);
 	}
 
