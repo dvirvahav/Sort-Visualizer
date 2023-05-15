@@ -1,10 +1,15 @@
-# Sort-Visualizer
-Visual the most common sorting algorithms.
-Was developed as part of my self-project to expend JAVA-GUI knowledge.
-The app has control panel with option to : choose sorting algorithm, start,stop,shuffle,speed and arraySize.
-You can choose sorting algorithm, stop it and choose another sorting algorithm to continute sorting without array reset.
-Speed is automatically continues sorting after speed change.
-![](SortVisualizerDemo.gif)
+# Sorting Algorithm Visualizer
+This application provides a dynamic visualization of the most common sorting algorithms. It was developed as part of a personal project to expand my JAVA-GUI expertise.
 
-Enjoy!
+The application includes a control panel that allows you to:
 
+- Select a sorting algorithm
+- Start, stop, and shuffle the sorting process
+- Adjust the speed of the visualization
+- Alter the size of the array being sorted
+
+One of the key features is the ability to stop a sorting process, select a different sorting algorithm, and continue sorting without resetting the array. Additionally, the sorting process automatically resumes after any speed adjustment.
+
+![Demo](SortVisualizerDemo.gif)
+
+Enjoy exploring the world of sorting algorithms with this visualizer!
